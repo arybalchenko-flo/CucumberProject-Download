@@ -1,7 +1,13 @@
 package variables;
 
+import util.Browsers;
+
+import static util.Browsers.CHROME_WIN;
+
+
 public class Variables {
-    public static String site = "https://www.pexels.com/ru-ru/video/1321208/";
+    //Выбор профиля браузера для запуска драйвера
+    public static Browsers browser = CHROME_WIN;
     //Размер файла для проверки
     public static long fileSize = 150000;
 }

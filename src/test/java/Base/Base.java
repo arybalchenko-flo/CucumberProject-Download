@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.time.Duration;
+import java.util.Objects;
 
 public class Base {
     protected static WebDriver driver;
@@ -51,5 +52,33 @@ public class Base {
                 }
             }
         };
+    }
+    public void waitForFolderMoreThan(File directory) {
+        wait.until(checkForFolderNotEmpty(directory));
+    }
+
+    private static ExpectedCondition<Boolean> checkForFolderNotEmpty(File directory) {
+        return new ExpectedCondition<Boolean>() {
+            @Nullable
+            @Override
+            public Boolean apply(@Nullable WebDriver webDriver) {
+                if (folderSize(directory) > 0) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        };
+    }
+    private static long folderSize(File directory) {
+        long length = 0;
+        for (File file : directory.listFiles()) {
+            if (file.isFile())
+                length += file.length();
+            else
+                length += folderSize(file);
+        }
+        return length;
     }
 }

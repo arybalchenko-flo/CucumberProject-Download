@@ -18,7 +18,6 @@ public class Main extends Base {
     private String neededExtension; //переменная для расширения
     private final File path = new File(WebDriverFactory.downloadDirWin); //переменная для пути загрузки
 
-
     @And("File with filename {string} downloaded")
     public void fileWithFilenameDownloaded(String fileName) {
         this.fileName = fileName; //Назначение имени файла
@@ -28,11 +27,11 @@ public class Main extends Base {
     public void iClickOnTheDownloadFileWithExtension(String neededExtension) {
         this.neededExtension = neededExtension; //Передача необходимого расширения файла из шага
         main.clickDownload();
+        waitForFolderMoreThan(path);
     }
 
     @And("Wait for download")
-    public void waitForDownload() throws InterruptedException {
-        Thread.sleep(1000);
+    public void waitForDownload(){
         waitForExtensionEqualsTo(path, this.neededExtension);
     }
 //Проверка на расширение, можно убрать так как выше она уже происходит

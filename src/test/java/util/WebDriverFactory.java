@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class WebDriverFactory {
@@ -21,6 +22,7 @@ public class WebDriverFactory {
                 ChromeOptions options = new ChromeOptions();
                 options.setExperimentalOption("prefs", chromePrefs);
                 driver = new ChromeDriver(options);
+                File m = new File(downloadDirMac);
                 break;
             case CHROME_WIN:
                 WebDriverManager.chromedriver().setup();
@@ -29,6 +31,7 @@ public class WebDriverFactory {
                 ChromeOptions optionsWin = new ChromeOptions();
                 optionsWin.setExperimentalOption("prefs", chromePrefsWin);
                 driver = new ChromeDriver(optionsWin);
+                File w = new File(downloadDirWin);
                 break;
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();

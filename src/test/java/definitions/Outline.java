@@ -9,15 +9,19 @@ import io.cucumber.java.en.When;
 public class Outline extends Base {
     MvMainPage main = new MvMainPage();
 
-    @When("I search {string}")
-    public void iSearch(String keysToSend) {
-        main.search(keysToSend);
+    @When("I search item {string}")
+    public void iSearchItem(String keysToSend) {
+        main.searchingItem(keysToSend);
         main.sendEnterKey();
-        main.searchResultCheck();
     }
 
-    @Then("Search {string} completed")
-    public void searchCompleted(String keysToSend) {
-        System.out.println("Search " + keysToSend + " completed.");
+    @Then("Search completed")
+    public void searchCompleted() {
+        if (!main.isElementPresent(3)) {
+            System.out.println("Items found");
+        }
+        else {
+            System.out.println("Item not found");
+        }
     }
 }

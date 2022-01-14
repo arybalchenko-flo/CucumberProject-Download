@@ -14,14 +14,16 @@ Feature: I want to download file in the selected directory
 #    Then File downloaded successfully without problems
 
     Scenario Outline: Search picture
-      When I search "<searchObject>"
-      Then Search "<searchObject>" completed
+      When I search item "<searchObject>"
+      Then Search completed
 
       Examples:
       | searchObject |
       | Телефоны          |
       | Телевизоры          |
-      ||
+      | |
+      | * |
+      | ! |
 
 
 

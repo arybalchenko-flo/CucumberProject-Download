@@ -15,6 +15,9 @@ public class MainPage extends Base {
   private static final By downloadBtn = By.cssSelector("a.js-download");
   private static final By photoSelect = By.cssSelector("article.photo-item");
   private static final By downloadPhoto =By.xpath("//span[contains(text(), 'Бесплатное')]");
+  private static final By searchBar=By.xpath("//section//div[@class='search-bar__container']//descendant::input");
+  private static final By searchHeader=By.xpath("//h1[@class='search__header__title']");
+  private static final By searchButton=By.xpath("//button[@data-track-action='hero']");
 
   public void downloadClick() { //Нахождение кнопки скачать и клик по ней
     WebElement input = wait.until(ExpectedConditions.elementToBeClickable(downloadBtn));
@@ -32,5 +35,17 @@ public class MainPage extends Base {
     input.click();
   }
 
+  public void sendKeysInSearch(String keysToSend) {
+    WebElement search = wait.until(ExpectedConditions.elementToBeClickable(searchBar));
+    search.sendKeys(keysToSend);
+  }
 
+  public void clickSearchButton(){
+    WebElement button1 = wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+    button1.click();
+  }
+
+  public void searchComplete() {
+    wait.until(ExpectedConditions.visibilityOfElementLocated(searchHeader));
+  }
 }

@@ -9,7 +9,10 @@ import java.time.Duration;
 
 public class MvMainPage extends Base {
     private By searchBar = By.xpath("//div[@class='input__container']/input");
-    private By noSearchResults = By.xpath("//mvid-empty-srp-results");
+    private By symbolSearch = By.xpath("//mvid-empty-srp-results");
+    private By brandSearch = By.xpath("//li[contains(text(), 'Все товары бренда')]");
+    private By goodsSearch = By.xpath("//p[contains(text(), 'Найдено')]");
+    private By promoSearch = By.xpath("//li[contains (text(), 'Узкие стиральные машины Bosch')]");
 
     //Поиск
     public void searchingItem(String keysToSend)
@@ -21,14 +24,21 @@ public class MvMainPage extends Base {
         sendEnter(searchBar);
     }
 
-    public boolean isElementPresent(long time) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time)); // you can set the wait time in second
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated((noSearchResults)));
-        } catch (Exception e) {
-            return false;
+    public void checkSearchResult(MvCasesSearchPage type, long time) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        switch (type) {
+            case BRAND: //Запросы по бренду. Пример: Samsung
+                wait.until(ExpectedConditions.visibilityOfElementLocated(brandSearch));
+                break;
+            case GOODS: //Запросы по виду товаров. Пример: Телевизоры
+                wait.until(ExpectedConditions.visibilityOfElementLocated(goodsSearch));
+                break;
+            case SYMBOL: //Запросы по спец. символам. Пример: *
+                wait.until(ExpectedConditions.visibilityOfElementLocated(symbolSearch));
+                break;
+            case PROMO: //Промо-страница при отправке пустой строки поиска
+                wait.until(ExpectedConditions.visibilityOfElementLocated(promoSearch));
         }
-        return true;
     }
 }
 

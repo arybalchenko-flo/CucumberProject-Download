@@ -15,15 +15,17 @@ Feature: I want to download file in the selected directory
 
     Scenario Outline: Search picture
       When I search item "<searchObject>"
-      Then Search completed
+      Then Search of "<type>" completed
 
       Examples:
-      | searchObject |
-      | Телефоны          |
-      | Телевизоры          |
-      | |
-      | * |
-      | ! |
+      | searchObject | type |
+      | Телефоны          | GOODS |
+      | Телевизоры          | GOODS |
+      | * | SYMBOL                  |
+      | ! | SYMBOL                  |
+      | Samsung | BRAND             |
+      |      LG |  BRAND            |
+      |         | PROMO             |
 
 
 

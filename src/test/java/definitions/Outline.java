@@ -2,6 +2,7 @@ package definitions;
 
 import Base.Base;
 import Pages.MainPage;
+import Pages.MvCasesSearchPage;
 import Pages.MvMainPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,13 +16,8 @@ public class Outline extends Base {
         main.sendEnterKey();
     }
 
-    @Then("Search completed")
-    public void searchCompleted() {
-        if (!main.isElementPresent(3)) {
-            System.out.println("Items found");
-        }
-        else {
-            System.out.println("Item not found");
-        }
+    @Then("Search of {string} completed")
+    public void searchOfCompleted(String type) {
+        main.checkSearchResult(MvCasesSearchPage.valueOf(type), 8);
     }
 }

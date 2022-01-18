@@ -1,7 +1,11 @@
 package Base;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.annotation.Nullable;
@@ -81,4 +85,23 @@ public class Base {
         }
         return length;
     }
+
+    public void sendKey(By key_locator, String keysToSend) {
+        WebElement sendKey = wait.until(ExpectedConditions.visibilityOfElementLocated(key_locator));
+        sendKey.sendKeys(keysToSend);
+    }
+
+    public void sendEnter(By key_locator) {
+        WebElement sendEnter = wait.until(ExpectedConditions.visibilityOfElementLocated(key_locator));
+        sendEnter.sendKeys(Keys.ENTER);
+    }
+
+    public void clickOnTheButton(By key_locator) {
+        WebElement click = wait.until(ExpectedConditions.visibilityOfElementLocated(key_locator));
+        click.click();
+    }
+    public void waitForUrlContains(String url) {
+        wait.until(ExpectedConditions.urlContains(url));
+    }
+
 }

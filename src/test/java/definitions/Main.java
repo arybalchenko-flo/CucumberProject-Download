@@ -16,7 +16,7 @@ public class Main extends Base {
     MainPage main = new MainPage();
     private String fileName; //переменная для имени файла
     private String neededExtension; //переменная для расширения
-    private final File path = new File(WebDriverFactory.downloadDirWin); //переменная для пути загрузки
+    private final File path = new File(WebDriverFactory.downloadDirMac); //переменная для пути загрузки
 
     @And("File with filename {string} downloaded")
     public void fileWithFilenameDownloaded(String fileName) {

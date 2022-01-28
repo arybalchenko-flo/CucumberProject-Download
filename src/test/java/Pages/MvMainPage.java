@@ -11,8 +11,8 @@ public class MvMainPage extends Base {
     private By searchBar = By.xpath("//div[@class='input__container']/input");
     private By symbolSearch = By.xpath("//mvid-empty-srp-results");
     private By searchButton = By.xpath("//div[@class='search-icon-wrap ng-star-inserted']");
-    private By goodsSearch = By.xpath("//p[contains(text(), 'Найдено')]");
-    private By promoSearch = By.xpath("//li[contains (text(), 'Узкие стиральные машины Bosch')]");
+    private By goodsSearch = By.xpath("//p[contains(text(), 'Найден')]");
+    private By promoSearch = By.xpath("//li[contains (text(), 'Промокоды на скидки')]");
     private By category = By.xpath("//div[@class='category-grid-wrapper']/h2");
     private By goodsAddToCart = By.xpath("//span[contains (text(), 'В корзину')]");
     private By symbolImage = By.xpath("//img[@class='empty-products__image']");

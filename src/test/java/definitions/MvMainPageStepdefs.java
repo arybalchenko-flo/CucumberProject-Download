@@ -1,18 +1,29 @@
 package definitions;
 
 import Base.Base;
-import Pages.MainPage;
 import Pages.MvCasesSearchPage;
 import Pages.MvMainPage;
+import hooks.Hooks;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Outline extends Base {
+public class MvMainPageStepdefs extends Base {
     MvMainPage main = new MvMainPage();
 
-    @When("I search item {string}")
-    public void iSearchItem(String keysToSend) {
+    @When("I open the {string} site page")
+    public void iOpenTheSitePage(String siteUrl) {
+        Hooks.openSite(siteUrl);
+    }
+
+    @Then("Page {string} opened")
+    public void pageOpened(String url) {
+        waitForUrlContains(url);
+        waitForSiteToLoad();
+    }
+
+    @When("Searching item {string}")
+    public void searchingItem(String keysToSend) {
         main.searchingItem(keysToSend);
     }
 
@@ -30,4 +41,6 @@ public class Outline extends Base {
     public void clickOnTheSearchButton() {
         main.clickOnSearchButton();
     }
+
+
 }

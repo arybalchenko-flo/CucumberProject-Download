@@ -1,9 +1,6 @@
 package Base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.time.Duration;
-import java.util.Objects;
 
 public class Base {
     protected static WebDriver driver;
@@ -97,11 +93,21 @@ public class Base {
     }
 
     public void clickOnTheButton(By key_locator) {
-        WebElement click = wait.until(ExpectedConditions.visibilityOfElementLocated(key_locator));
+        WebElement click = wait.until(ExpectedConditions.elementToBeClickable(key_locator));
         click.click();
     }
     public void waitForUrlContains(String url) {
         wait.until(ExpectedConditions.urlContains(url));
     }
 
+    public void waitForSiteToLoad() {
+        ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor)driver).executeScript("return document.readyState")
+                        .toString().equals("complete");
+            }
+        };
+        wait.until(jsLoad);
+    }
 }

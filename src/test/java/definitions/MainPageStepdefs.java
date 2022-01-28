@@ -5,14 +5,13 @@ import Pages.MainPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import util.WebDriverFactory;
 
 import java.io.File;
 
 import static variables.Variables.fileSize;
 
-public class Main extends Base {
+public class MainPageStepdefs extends Base {
     MainPage main = new MainPage();
     private String fileName; //переменная для имени файла
     private String neededExtension; //переменная для расширения

@@ -14,7 +14,7 @@ Feature: I want to download file in the selected directory
 #    Then File downloaded successfully without problems
 
   Scenario Outline: Search picture with enter key
-    When I search item "<searchObject>"
+    When Searching item "<searchObject>"
     And click enter
     Then Search of "<type>" "<searchObject>" completed
 
@@ -26,7 +26,7 @@ Feature: I want to download file in the selected directory
       |              | PROMO  |
 
   Scenario Outline: Search picture with click on the search button
-    When I search item "<searchObject>"
+    When Searching item "<searchObject>"
     And click on the search button
     Then Search of "<type>" "<searchObject>" completed
 
